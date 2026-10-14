@@ -1,0 +1,42 @@
+Animal Crossing native PS5 — v1.0.0
+
+Native startup, town gameplay and saving have been tested on firmware 9.00.
+4K targets 60 Hz but measured performance varies around 30–60 FPS by scene.
+Use the existing firmware 9.00 kstuff + ShadowMount setup.
+
+Prepare private M.2 data with Python 3.11 or newer:
+  python3 tools/prepare-data.py --iso "Animal Crossing (USA).iso" --hd-zip ACHD.zip --output prepared-data
+
+Close Animal Crossing before updating it. Keep other active games untouched.
+Upload the extracted native title with FTP on the current console address:
+  Linux: bash tools/install.sh --src output/PPSA99660 --console CONSOLE_IP --data prepared-data
+  Windows: powershell -File tools/install.ps1 -Src output/PPSA99660 -Console CONSOLE_IP -Data prepared-data
+
+The same PS5 executable is in both ZIPs. Windows/Linux identify the installer
+platform, not the game platform. Python 3.11+ is required for data preparation.
+The installer places the title at /mnt/ext1/etaHEN/games/PPSA99660 and private
+content at /mnt/ext1/etaHEN/games/PPSA99660/data. Existing content/settings and saves are preserved;
+previous title files are kept under timestamped .before-* names.
+Register/mount the title with PS5 Upload or the existing native-title launcher.
+The installer does not close, register or launch titles.
+
+Controls use the standard SDL GameCube mapping: Cross=A, Circle=B, Square=X,
+Triangle=Y, Options=Start. Back/touchpad opens the port menu where supported by
+the existing SDL2 controller backend.
+The native diagnostic log is /download0/ps5-opengl.log in this title's sandbox.
+
+Supply a USA GameCube revision 0 GAFE01 disc image. HD textures are optional
+and installed separately; the community pack is incomplete. Never upload saves
+over another console's saves. The release contains no game image or HD textures.
+
+The native sandbox uses /app0/data for disc/textures and /download0 for saves,
+settings and caches. Existing saves are not migrated or replaced by this helper.
+
+Saving: speak to the gyroid outside your own house and choose Save and Quit.
+During the first introduction, speak to a villager before trying to save.
+Wait until saving completes before closing or updating the app.
+The graphics diagnostic log is bounded to protect save storage.
+
+Catalog package: PPSA99660.zip contains PPSA99660/ at its root. Extract that
+folder and install with your usual native-title workflow. Game data must be
+prepared separately; installer tools are supplied in the Windows/Linux ZIPs.

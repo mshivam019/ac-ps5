@@ -1,0 +1,319 @@
+{
+  "disc": "GAFE01 revision 0",
+  "mapping": {
+    "A": "Cross",
+    "B": "Circle",
+    "X": "Square",
+    "Y": "Triangle",
+    "Start": "Options",
+    "L": "L2",
+    "R": "R2",
+    "Z": "R1",
+    "C-stick": "right stick"
+  },
+  "textures": [
+    {
+      "source": "kai_sousa_button1a_tex_rgb_ia8",
+      "rel_offset": "0x6F8D00",
+      "bytes": 2048,
+      "width": 32,
+      "height": 64,
+      "format": 2,
+      "hash": "32ab316023b9071b",
+      "svg": "cross-half.svg",
+      "notes": "A: left half, GX mirrored S produces one complete cross"
+    },
+    {
+      "source": "kai_sousa_button1b_tex_rgb_ia8",
+      "rel_offset": "0x6F9500",
+      "bytes": 2048,
+      "width": 32,
+      "height": 64,
+      "format": 2,
+      "hash": "f741dbf382ce0da7",
+      "svg": "cross-half-pressed.svg",
+      "notes": "A: left half, GX mirrored S produces one complete cross"
+    },
+    {
+      "source": "kai_sousa_button2a_tex_rgb_ia8",
+      "rel_offset": "0x6F9D00",
+      "bytes": 512,
+      "width": 16,
+      "height": 32,
+      "format": 2,
+      "hash": "0565dbb74e578d68",
+      "svg": "circle-half.svg",
+      "notes": "B: left half, GX mirrored S produces one complete circle"
+    },
+    {
+      "source": "kai_sousa_button2b_tex_rgb_ia8",
+      "rel_offset": "0x6F9F00",
+      "bytes": 512,
+      "width": 16,
+      "height": 32,
+      "format": 2,
+      "hash": "7dcf93f4cb2e76f9",
+      "svg": "circle-half-pressed.svg",
+      "notes": "B: left half, GX mirrored S produces one complete circle"
+    },
+    {
+      "source": "kai_sousa_lbutton_tex_rgb_ia8",
+      "rel_offset": "0x6FBD00",
+      "bytes": 2048,
+      "width": 64,
+      "height": 32,
+      "format": 2,
+      "hash": "2e8c04b49c55b79d",
+      "svg": "l2.svg",
+      "notes": ""
+    },
+    {
+      "source": "kai_sousa_lbutton2_tex_rgb_ia8",
+      "rel_offset": "0x6FB500",
+      "bytes": 2048,
+      "width": 64,
+      "height": 32,
+      "format": 2,
+      "hash": "8ff4c7468e580e60",
+      "svg": "l2-pressed.svg",
+      "notes": ""
+    },
+    {
+      "source": "kai_sousa_rbutton_tex_rgb_ia8",
+      "rel_offset": "0x6F2500",
+      "bytes": 2048,
+      "width": 64,
+      "height": 32,
+      "format": 2,
+      "hash": "9cf7ca47df13625f",
+      "svg": "r2.svg",
+      "notes": ""
+    },
+    {
+      "source": "kai_sousa_rbutton2_tex_rgb_ia8",
+      "rel_offset": "0x6F1D00",
+      "bytes": 2048,
+      "width": 64,
+      "height": 32,
+      "format": 2,
+      "hash": "53b571f4ca9aa571",
+      "svg": "r2-pressed.svg",
+      "notes": ""
+    },
+    {
+      "source": "kai_sousa_xbutton_tex_rgb_ia8",
+      "rel_offset": "0x6FC700",
+      "bytes": 512,
+      "width": 16,
+      "height": 32,
+      "format": 2,
+      "hash": "8e8e971996fa8f42",
+      "svg": "square-tall.svg",
+      "notes": ""
+    },
+    {
+      "source": "kai_sousa_xbutton2_tex_rgb_ia8",
+      "rel_offset": "0x6FC500",
+      "bytes": 512,
+      "width": 16,
+      "height": 32,
+      "format": 2,
+      "hash": "284c6c830d56f1ac",
+      "svg": "square-tall-pressed.svg",
+      "notes": ""
+    },
+    {
+      "source": "kai_sousa_ybutton_tex_rgb_ia8",
+      "rel_offset": "0x6FCB00",
+      "bytes": 512,
+      "width": 32,
+      "height": 16,
+      "format": 2,
+      "hash": "6d0d621c66c96f54",
+      "svg": "triangle-wide.svg",
+      "notes": ""
+    },
+    {
+      "source": "kai_sousa_ybutton2_tex_rgb_ia8",
+      "rel_offset": "0x6FC900",
+      "bytes": 512,
+      "width": 32,
+      "height": 16,
+      "format": 2,
+      "hash": "03fc1df209c8ce8c",
+      "svg": "triangle-wide-pressed.svg",
+      "notes": ""
+    },
+    {
+      "source": "kai_sousa/kai_sousa_button3_tex",
+      "rel_offset": "0x6F1100",
+      "bytes": 256,
+      "width": 16,
+      "height": 16,
+      "format": 2,
+      "hash": "6f05bf1bb0dceb63",
+      "svg": "options.svg",
+      "notes": ""
+    },
+    {
+      "source": "pas_start/kai_sousa_button3_tex",
+      "rel_offset": "0x7B14C0",
+      "bytes": 256,
+      "width": 16,
+      "height": 16,
+      "format": 2,
+      "hash": "6f05bf1bb0dceb63",
+      "svg": "options.svg",
+      "notes": ""
+    },
+    {
+      "source": "onp__x_tex_rgb_ia8",
+      "rel_offset": "0x780B40",
+      "bytes": 512,
+      "width": 16,
+      "height": 32,
+      "format": 2,
+      "hash": "0bc7b1c33833d946",
+      "svg": "base-tall.svg",
+      "notes": "Separate x/y/rmoji overlay supplies the symbol"
+    },
+    {
+      "source": "onp__x2_tex_rgb_ia8",
+      "rel_offset": "0x780940",
+      "bytes": 512,
+      "width": 16,
+      "height": 32,
+      "format": 2,
+      "hash": "32261ecdfa0787a3",
+      "svg": "base-tall-pressed.svg",
+      "notes": "Separate x/y/rmoji overlay supplies the symbol"
+    },
+    {
+      "source": "onp__y_tex_rgb_ia8",
+      "rel_offset": "0x780F40",
+      "bytes": 512,
+      "width": 32,
+      "height": 16,
+      "format": 2,
+      "hash": "e162e512d3353cac",
+      "svg": "base-wide.svg",
+      "notes": "Separate x/y/rmoji overlay supplies the symbol"
+    },
+    {
+      "source": "onp__y2_tex_rgb_ia8",
+      "rel_offset": "0x780D40",
+      "bytes": 512,
+      "width": 32,
+      "height": 16,
+      "format": 2,
+      "hash": "7f6fd7bcc839e5fc",
+      "svg": "base-wide-pressed.svg",
+      "notes": "Separate x/y/rmoji overlay supplies the symbol"
+    },
+    {
+      "source": "onp_win_rbutton_tex_rgb_ia8",
+      "rel_offset": "0x785640",
+      "bytes": 512,
+      "width": 32,
+      "height": 16,
+      "format": 2,
+      "hash": "a45ad7a191bb9bec",
+      "svg": "base-wide.svg",
+      "notes": "Separate x/y/rmoji overlay supplies the symbol"
+    },
+    {
+      "source": "onp_win_rbutton2_tex_rgb_ia8",
+      "rel_offset": "0x785440",
+      "bytes": 512,
+      "width": 32,
+      "height": 16,
+      "format": 2,
+      "hash": "f2f9f60c5cf1a102",
+      "svg": "base-wide-pressed.svg",
+      "notes": "Separate x/y/rmoji overlay supplies the symbol"
+    },
+    {
+      "source": "start_tex_rgb_ia8",
+      "rel_offset": "0x780540",
+      "bytes": 1024,
+      "width": 32,
+      "height": 32,
+      "format": 2,
+      "hash": "21b675eeb2f54fca",
+      "svg": "options.svg",
+      "notes": ""
+    },
+    {
+      "source": "start2_tex_rgb_ia8",
+      "rel_offset": "0x780140",
+      "bytes": 1024,
+      "width": 32,
+      "height": 32,
+      "format": 2,
+      "hash": "ec9475b9bbc1dad3",
+      "svg": "options-pressed.svg",
+      "notes": ""
+    },
+    {
+      "source": "x",
+      "rel_offset": "0x780040",
+      "bytes": 128,
+      "width": 16,
+      "height": 16,
+      "format": 0,
+      "hash": "ab7ff7ec5bdfa7f8",
+      "svg": "square.svg",
+      "notes": "I4 alpha glyph; primitive color remains authoritative"
+    },
+    {
+      "source": "y",
+      "rel_offset": "0x7800C0",
+      "bytes": 128,
+      "width": 16,
+      "height": 16,
+      "format": 0,
+      "hash": "a12cd89c331d788f",
+      "svg": "triangle.svg",
+      "notes": "I4 alpha glyph; primitive color remains authoritative"
+    },
+    {
+      "source": "rmoji",
+      "rel_offset": "0x7853C0",
+      "bytes": 128,
+      "width": 16,
+      "height": 16,
+      "format": 0,
+      "hash": "42323376200cd579",
+      "svg": "r2-glyph.svg",
+      "notes": "I4 alpha glyph; primitive color remains authoritative"
+    },
+    {
+      "source": "lat_tegami_b2_tex",
+      "rel_offset": "0x7A8CE0",
+      "bytes": 2048,
+      "width": 32,
+      "height": 32,
+      "format": 5,
+      "hash": "a22541c5673e1074",
+      "svg": "circle-notice.svg",
+      "notes": "Notice board and shared diary/calendar full RGB5A3 button face. Existing second texture provides silhouette alpha."
+    },
+    {
+      "source": "lat_tegami_b3_tex",
+      "rel_offset": "0x7A94E0",
+      "bytes": 2048,
+      "width": 32,
+      "height": 32,
+      "format": 5,
+      "hash": "ecd9031bc7f3f4ed",
+      "svg": "cross-notice.svg",
+      "notes": "Notice board and shared diary/calendar full RGB5A3 button face. Existing second texture provides silhouette alpha."
+    }
+  ],
+  "limitations": [
+    "Z/R1 and C-stick/right-stick vectors and standalone DDS supplied but not hash-bound: no dedicated prompt texture confirmed in the inspected draw paths.",
+    "Main m_font atlas is ordinary text; BUTTON control codes wait for input, not button glyphs. Plain text button names require contextual message/draw changes outside this texture-only scope.",
+    "Original controller silhouette and left-stick/D-pad diagrams remain unchanged.",
+    "Fixed glyphs assume default pc_keybindings gamepad mapping."
+  ]
+}

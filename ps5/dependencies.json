@@ -1,0 +1,148 @@
+{
+  "game_source": {
+    "url": "https://github.com/PalindromicBreadLoaf/ACGC-PC-Port-64bit",
+    "revision": "2a13b833741b04a50330c57c5d51b2efc5982d0e"
+  },
+  "graphics_sdk": "ps5-opengl-sdk-0.3.0 with the existing ports\u2019 patches, native 60 Hz profiles",
+  "compiler": "Clang 18.1.8, x86_64-sie-ps5",
+  "native_tooling": {
+    "prepared_revision": "c93771e0f9bf4f0993c3c317d7df4cc01888fb72",
+    "local_changes_preserved": true
+  },
+  "platform_support_source": "Morrowind-PS5 9f74d83189f80c672e71317ef77e311acdcd98c5",
+  "prepared_native_inputs": [
+    {
+      "sdk_relative_path": "ac-gl-1080p60/sdk/lib/libPS5OpenGL.a",
+      "bytes": 430,
+      "sha256": "fe8db79879f732db3705780555f4d2a2921a4784e6d3b5ac4b60265fa4aeae23"
+    },
+    {
+      "sdk_relative_path": "ac-gl-1080p60/sdk/lib/libPS5OpenGLCore33.a",
+      "bytes": 430,
+      "sha256": "fe8db79879f732db3705780555f4d2a2921a4784e6d3b5ac4b60265fa4aeae23"
+    },
+    {
+      "sdk_relative_path": "ac-gl-1080p60/sdk/lib/libblake3.a",
+      "bytes": 267188,
+      "sha256": "ccfeeb9baa5003699744559bfc6395fb11df46255b02c30024bb3672da8cda53"
+    },
+    {
+      "sdk_relative_path": "ac-gl-1080p60/sdk/lib/libcompiler.a",
+      "bytes": 536236,
+      "sha256": "e800b7ca6da24c5acaa934502c1c6a4511bf02de09025bf96c7747ea5745eab4"
+    },
+    {
+      "sdk_relative_path": "ac-gl-1080p60/sdk/lib/libgallium.a",
+      "bytes": 21140646,
+      "sha256": "e7c27d147d3e3149d17c5b7929ec086c27daa0fade0b7b8706eeffbead8386e0"
+    },
+    {
+      "sdk_relative_path": "ac-gl-1080p60/sdk/lib/libglapi.a",
+      "bytes": 2799896,
+      "sha256": "ddd18ea57811da8366fc061116586394904a8cf55e385b92c65b9d515aad9e9b"
+    },
+    {
+      "sdk_relative_path": "ac-gl-1080p60/sdk/lib/libglapi_bridge.a",
+      "bytes": 1101914,
+      "sha256": "6b6c0ab8ac59a93c3c76eeabcd8c98fcee02520886a98ca188c60a9e5a9d0f5a"
+    },
+    {
+      "sdk_relative_path": "ac-gl-1080p60/sdk/lib/libglcpp.a",
+      "bytes": 636830,
+      "sha256": "f132109baa907e7e832ded2a57271248ed0210af1210b4404cec958b4e96b265"
+    },
+    {
+      "sdk_relative_path": "ac-gl-1080p60/sdk/lib/libglsl.a",
+      "bytes": 14641508,
+      "sha256": "963b3cfabbea2fae03c25b01af37516b1a251d6546f0b86db1c1b74a8fab937b"
+    },
+    {
+      "sdk_relative_path": "ac-gl-1080p60/sdk/lib/libglsl_util.a",
+      "bytes": 116054,
+      "sha256": "f71844e6c64c2cf68a4fece66cea1a57b3c836660d4d5895e52d0140f6ed5f7a"
+    },
+    {
+      "sdk_relative_path": "ac-gl-1080p60/sdk/lib/libmesa.a",
+      "bytes": 78415788,
+      "sha256": "ffd6888af17ac57e47d591599454c39155fff6ce2f52ac5bce66deac9d9662e7"
+    },
+    {
+      "sdk_relative_path": "ac-gl-1080p60/sdk/lib/libmesa_sse41.a",
+      "bytes": 6548,
+      "sha256": "2a739153a9195ef1175459290bcdb7e8db91b9ca6250d3e987c0fa014960c83e"
+    },
+    {
+      "sdk_relative_path": "ac-gl-1080p60/sdk/lib/libmesa_util.a",
+      "bytes": 8789048,
+      "sha256": "5e28cd37a0d2b0b1a2dba063a30b9003db95f8a26470a318e29f43a475fded4f"
+    },
+    {
+      "sdk_relative_path": "ac-gl-1080p60/sdk/lib/libmesa_util_c11.a",
+      "bytes": 35732,
+      "sha256": "01cc1dfb4fe9550eeb8dd619e37624002acd8f2c8f2dcbf2d8cb4722242fb361"
+    },
+    {
+      "sdk_relative_path": "ac-gl-1080p60/sdk/lib/libmesa_util_simd.a",
+      "bytes": 10212,
+      "sha256": "638d7a5f122fbd8e240bc50ff11ca4085c910378d0a0f78317ae1e5f2f19fc99"
+    },
+    {
+      "sdk_relative_path": "ac-gl-1080p60/sdk/lib/libnir.a",
+      "bytes": 64178412,
+      "sha256": "0e75fc51f6fea822f3d8d2e5e9ab07a17216958ca66e122947e4009c3085a469"
+    },
+    {
+      "sdk_relative_path": "ac-gl-1080p60/sdk/lib/libpsbc.ps5.a",
+      "bytes": 130934436,
+      "sha256": "4d6e69b08379eac3190f855bce0b2b15e7532c47763f031ca18b238a77d246f1"
+    },
+    {
+      "sdk_relative_path": "ac-gl-1080p60/sdk/lib/libvtn.a",
+      "bytes": 6788632,
+      "sha256": "8cf812f426afc2d20ffe1297f30fe0eb0ed8ad6c6720706b4d5974575c31be2e"
+    },
+    {
+      "sdk_relative_path": "native-app-boilerplate/runtime/libc.prx",
+      "bytes": 1284674,
+      "sha256": "e6ff45d16adf687855cc3b33b0c8a4132b6504360b221e0a34c7e99fb3ba0036"
+    }
+  ],
+  "graphics_profiles": {
+    "1080p60": {
+      "height": 1080,
+      "width": 1920,
+      "sdk_relative_path": "ac-gl-1080p60/sdk",
+      "sdl_relative_path": "ps5-opengl-030/ps5-opengl/build/sdl2-native/sdk",
+      "prepared_native_inputs": [
+        {
+          "sdk_relative_path": "ac-gl-1080p60/sdk/lib/libps5_opengl_core33.a",
+          "bytes": 1993332,
+          "sha256": "ab73e05837999c3b7dd2cd422772949f18f66dbc343cc1544cd96411ed995015"
+        },
+        {
+          "sdk_relative_path": "ps5-opengl-030/ps5-opengl/build/sdl2-native/sdk/lib/libSDL2.a",
+          "bytes": 2149254,
+          "sha256": "d7ff57535b5b637224dee97ea587ab8a5c629d745c6be7bcd890a97eaef83b95"
+        }
+      ]
+    },
+    "2160p60": {
+      "height": 2160,
+      "width": 3840,
+      "sdk_relative_path": "ac-gl-2160p60/sdk",
+      "sdl_relative_path": "ps5-opengl-030/ps5-opengl/build/soh-sdl-2160p120/sdk",
+      "prepared_native_inputs": [
+        {
+          "sdk_relative_path": "ac-gl-2160p60/sdk/lib/libps5_opengl_core33.a",
+          "bytes": 1993332,
+          "sha256": "999434fcd22aac84a5776fa09877b3f953a199a94682f7d310220cda5192c916"
+        },
+        {
+          "sdk_relative_path": "ps5-opengl-030/ps5-opengl/build/soh-sdl-2160p120/sdk/lib/libSDL2.a",
+          "bytes": 2111158,
+          "sha256": "ebb5eda823f669e8e61e6a9d6f4ccbb60ee44fe4465555e17df13f9c720a4f02"
+        }
+      ]
+    }
+  }
+}

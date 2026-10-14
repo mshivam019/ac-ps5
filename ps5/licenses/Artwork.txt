@@ -1,0 +1,9 @@
+Three leaves by Lorc, from Game-icons.net.
+https://game-icons.net/1x1/lorc/three-leaves.html
+https://game-icons.net/icons/ffffff/000000/1x1/lorc/three-leaves.svg
+Licensed under Creative Commons Attribution 3.0 Unported:
+https://creativecommons.org/licenses/by/3.0/
+Retrieved 2026-10-14. Recolored and placed in original native SVG layouts
+with DejaVu typography for the home icon and matching backgrounds.
+The artwork uses no Nintendo logo or promotional images.
+Render SVG with rsvg-convert; ps5/tools/prepare-art.py creates console DDS files.

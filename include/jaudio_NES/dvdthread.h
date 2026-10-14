@@ -1,0 +1,59 @@
+#ifndef DVDTHREAD_H
+#define DVDTHREAD_H
+
+#include "types.h"
+#include "dolphin/dvd.h"
+
+#ifdef TARGET_PC
+#include "pc_portability.h"
+typedef void (*Jac_DVDCallback)(uintptr_t);
+#else
+typedef void (*Jac_DVDCallback)(u32);
+#endif
+typedef s32 (*TaskCallback)(void*);
+typedef void (*ErrorCallback)(char*, u8* addr);
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+extern void DVDT_ExtendPath(char* dst, char* ext);
+extern s32 DVDT_AddTaskHigh(TaskCallback callback, void* stackp, size_t len);
+extern s32 DVDT_AddTask(TaskCallback callback, void* stackp, size_t len);
+extern void jac_dvdproc_init();
+extern void* jac_dvdproc(void*);
+extern s32 DVDT_LoadtoARAM_Main(void* arg);
+#ifdef TARGET_PC
+extern s32 DVDT_LoadtoARAM(uintptr_t owner, char* name, aram_addr_t dst, dvd_offset_t src, u32 length, u32* status,
+                           Jac_DVDCallback callback);
+extern s32 DVDT_ARAMtoDRAM(uintptr_t owner, aram_addr_t src, void* dst, u32 length, u32* status,
+                           Jac_DVDCallback callback);
+extern s32 DVDT_DRAMtoARAM(uintptr_t owner, const void* src, aram_addr_t dst, u32 length, u32* status,
+                           Jac_DVDCallback callback);
+#else
+extern s32 DVDT_LoadtoARAM(u32 owner, char* name, u32 dst, u32 src, u32 length, u32* status, Jac_DVDCallback callback);
+extern s32 DVDT_ARAMtoDRAM(u32 owner, u32 dst, u32 src, u32 length, u32* status, Jac_DVDCallback callback);
+extern s32 DVDT_DRAMtoARAM(u32 owner, u32 dst, u32 src, u32 length, u32* status, Jac_DVDCallback callback);
+#endif
+extern s32 DVDT_ARAMtoDRAM_Main(void* arg);
+extern s32 DVDT_DRAMtoARAM_Main(void* arg);
+extern s32 DVDT_CheckFile(char* file);
+#ifdef TARGET_PC
+extern s32 DVDT_CheckPass(uintptr_t owner, u32* status, Jac_DVDCallback callback);
+#else
+extern s32 DVDT_CheckPass(u32 owner, u32* status, Jac_DVDCallback callback);
+#endif
+extern s32 Jac_CheckFile(char* file);
+extern void Jac_RegisterDVDErrorCallback(ErrorCallback callback);
+extern s32 Jac_RegisterFastOpen(char* file);
+extern BOOL Jac_DVDOpen(char* name, DVDFileInfo* info);
+
+#ifdef TARGET_PC
+void pc_dvd_process_all_tasks(void);
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif
