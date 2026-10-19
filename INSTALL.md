@@ -166,6 +166,13 @@ another compatible FTP server. Game-data-only transfer avoids uploading the app.
 
 ## Updates and recovering game files
 
+**October 20 color fix:** the existing v1.0.0 downloads have been refreshed to
+correct the blue/cyan tint. Download the app ZIP again if you have an earlier
+copy. Close Animal Crossing, then merge the new `PPSA99660` app files into the
+installed folder. Keep your existing `data` folder and saves. There is no need
+to prepare the ISO or HD textures again. Store users need the refreshed app
+package; running the game-data helper alone does not update the executable.
+
 Keep saves, configuration, mods and separately prepared game data. When copying
 an app update manually, merge app files; do not delete the entire installed folder.
 ProsperoStore updates can replace the app folder and move the old one (including

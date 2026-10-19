@@ -1,0 +1,87 @@
+--- a/src/egl/ps5_egl.c
++++ b/src/egl/ps5_egl.c
+@@ -378,7 +378,8 @@
+ 
+       memset(&resource, 0, sizeof(resource));
+       resource.target = PIPE_TEXTURE_2D;
+-      resource.format = PIPE_FORMAT_R8G8B8A8_UNORM;
++      /* VideoOut SDR consumes BGRA bytes; offscreen targets remain RGBA. */
++      resource.format = PIPE_FORMAT_B8G8R8A8_UNORM;
+       resource.width0 = PS5_EGL_WIDTH;
+       resource.height0 = PS5_EGL_HEIGHT;
+       resource.depth0 = 1;
+@@ -403,7 +404,7 @@
+       memset(&ps5_config, 0, sizeof(ps5_config));
+       ps5_config.visual.buffer_mask = ST_ATTACHMENT_FRONT_LEFT_MASK |
+                                       ST_ATTACHMENT_DEPTH_STENCIL_MASK;
+-      ps5_config.visual.color_format = PIPE_FORMAT_R8G8B8A8_UNORM;
++      ps5_config.visual.color_format = PIPE_FORMAT_B8G8R8A8_UNORM;
+       ps5_config.visual.depth_stencil_format =
+          PIPE_FORMAT_Z32_FLOAT_S8X24_UINT;
+       ps5_config.visual.accum_format = PIPE_FORMAT_NONE;
+--- a/src/gallium/ps5/ps5_screen.c
++++ b/src/gallium/ps5/ps5_screen.c
+@@ -1012,6 +1012,7 @@
+    case PIPE_FORMAT_R8_SNORM:
+    case PIPE_FORMAT_R8G8_UNORM:
+    case PIPE_FORMAT_R8G8_SNORM:
++   case PIPE_FORMAT_B8G8R8A8_UNORM:
+    case PIPE_FORMAT_R8G8B8A8_UNORM:
+    case PIPE_FORMAT_R8G8B8A8_SNORM:
+    case PIPE_FORMAT_R8G8B8A8_SRGB:
+@@ -1060,6 +1061,7 @@
+    if (PS5_ENABLE_CORE_RENDER_FORMATS_CANDIDATE)
+       return ps5_core_render_target_format(format);
+    return format == PIPE_FORMAT_R8G8B8A8_UNORM ||
++          format == PIPE_FORMAT_B8G8R8A8_UNORM ||
+           (PS5_ENABLE_FRAMEBUFFER_SRGB_CANDIDATE &&
+            format == PIPE_FORMAT_R8G8B8A8_SRGB) ||
+           (PS5_ENABLE_TEXTURE_RG_CANDIDATE &&
+@@ -1175,6 +1177,7 @@
+       return info;
+    }
+    switch (format) {
++   case PIPE_FORMAT_B8G8R8A8_UNORM: return UINT32_C(0x00008828);
+    case PIPE_FORMAT_R8_UNORM: return UINT32_C(0x00008004);
+    case PIPE_FORMAT_R8G8_UNORM: return UINT32_C(0x0000800c);
+    case PIPE_FORMAT_R11G11B10_FLOAT: return UINT32_C(0x00060718);
+@@ -5592,6 +5595,7 @@
+ 
+    if (PS5_ENABLE_CORE_RENDER_FORMATS_CANDIDATE &&
+        !(bindings & PIPE_BIND_DISPLAY_TARGET) &&
++       !(format == PIPE_FORMAT_B8G8R8A8_UNORM && (bindings & PIPE_BIND_SAMPLER_VIEW)) &&
+        ps5_core_render_target_format(format)) {
+       const unsigned allowed = PIPE_BIND_RENDER_TARGET |
+                                PIPE_BIND_SAMPLER_VIEW;
+@@ -10548,8 +10552,9 @@
+                   context->framebuffer.zsbuf.last_layer)) ||
+        (!depth_only_clear &&
+         (!target || target->base.target != PIPE_TEXTURE_2D ||
+-         target->base.format != PIPE_FORMAT_R8G8B8A8_UNORM ||
+-         surface->format != PIPE_FORMAT_R8G8B8A8_UNORM ||
++         (target->base.format != PIPE_FORMAT_R8G8B8A8_UNORM &&
++          target->base.format != PIPE_FORMAT_B8G8R8A8_UNORM) ||
++         surface->format != target->base.format ||
+          target->base.nr_samples > 1 || target->base.nr_storage_samples > 1 ||
+          target->render_staging_size || surface->level ||
+          surface->first_layer || surface->last_layer)) ||
+@@ -11471,7 +11476,8 @@
+        target->base.nr_samples > 1 || target->base.nr_storage_samples > 1 ||
+        target->render_staging_size || surface->level || surface->first_layer ||
+        surface->last_layer ||
+-       (surface->format != PIPE_FORMAT_R8G8B8A8_UNORM && surface->format != PIPE_FORMAT_R8_UNORM &&
++       (surface->format != PIPE_FORMAT_R8G8B8A8_UNORM &&
++        surface->format != PIPE_FORMAT_B8G8R8A8_UNORM && surface->format != PIPE_FORMAT_R8_UNORM &&
+         surface->format != PIPE_FORMAT_R8G8_UNORM && surface->format != PIPE_FORMAT_R16G16B16A16_FLOAT) ||
+        target->base.format != surface->format ||
+        context->framebuffer.width != ps5_surface_width(surface) ||
+@@ -11534,7 +11540,8 @@
+    /* Only this validated color operation may defer its internal fan. The
+     * caller has already completed any CPU depth/stencil part of a mixed clear. */
+    context->deferred_clear = buffers == PIPE_CLEAR_COLOR0 && !scissor_state &&
+-                                  surface->format == PIPE_FORMAT_R8G8B8A8_UNORM;
++                                  (surface->format == PIPE_FORMAT_R8G8B8A8_UNORM ||
++                                   surface->format == PIPE_FORMAT_B8G8R8A8_UNORM);
+    if (scissor_state) {
+       struct pipe_surface selected = *surface;
+       util_blitter_clear_render_target(blitter, &selected, &quantized,

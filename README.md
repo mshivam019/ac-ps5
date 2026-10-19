@@ -12,6 +12,10 @@ The game is compiled for PS5; no GameCube emulator runs underneath it.
 
 [Download v1.0.0](https://github.com/mshivam019/ac-ps5/releases/tag/v1.0.0) · [Installation and controls](ps5/INSTALL.txt) · [Build from source](docs/BUILDING.md)
 
+The v1.0.0 downloads were refreshed on October 20 to fix the blue/cyan tint.
+If you downloaded an earlier copy, install the refreshed app files using the
+[update instructions](INSTALL.md#updates-and-recovering-game-files).
+
 ## Features
 
 - Native homebrew title **Animal Crossing** (`PPSA99660`), launched from the PS5 home screen.

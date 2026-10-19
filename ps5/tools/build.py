@@ -14,6 +14,11 @@ if __name__ == '__main__':
     height = args.profile.split('p')[0]
     subprocess.run(['bash', str(ROOT / 'ps5/tools/build.sh'),
                     '-DAC_PS5_HEIGHT:STRING=' + height, *cmake_args], check=True)
+    graphics = [sys.executable, str(ROOT / 'ps5/tools/build-graphics.py'),
+                '--profile', args.profile]
+    if os.environ.get('PS5SDK_ROOT'):
+        graphics += ['--sdk-root', os.environ['PS5SDK_ROOT']]
+    subprocess.run(graphics, check=True)
     args = [sys.executable, str(ROOT / 'ps5/tools/link-title.py'), '--profile', args.profile]
     if os.environ.get('PS5SDK_ROOT'):
         args += ['--sdk-root', os.environ['PS5SDK_ROOT']]

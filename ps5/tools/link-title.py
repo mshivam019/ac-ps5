@@ -27,6 +27,13 @@ def main():
     sdk_root = args.sdk_root.resolve()
     pins = json.loads((ROOT / 'ps5/dependencies.json').read_text())
     profile = pins['graphics_profiles'][args.profile]
+    scanout_runtime = ROOT / 'build/graphics-bgra' / args.profile / 'libps5_opengl_core33.a'
+    scanout_receipt = json.loads(scanout_runtime.with_name('receipt.json').read_text())
+    patch = ROOT / 'ps5/patches/bgra-scanout.patch'
+    if (scanout_receipt['patch_sha256'] != hashlib.sha256(patch.read_bytes()).hexdigest()
+            or scanout_receipt['sha256'] != hashlib.sha256(scanout_runtime.read_bytes()).hexdigest()
+            or scanout_receipt['profile'] != args.profile):
+        raise RuntimeError('Rebuild the BGRA graphics runtime for this profile')
     cache = (ROOT / 'build/ps5/CMakeCache.txt').read_text()
     if f'AC_PS5_HEIGHT:STRING={profile["height"]}' not in cache:
         raise RuntimeError('Game and graphics profiles differ; run build.py --profile ' + args.profile)
@@ -134,7 +141,8 @@ def main():
     for name in renderer_inputs:
         command = ['llvm-objcopy']
         command += [f'--redefine-sym={old}={new}' for old, new in allocation_symbols.items()]
-        subprocess.run(command + [str(prefix / 'lib' / name), str(renderer / name)], check=True)
+        source = scanout_runtime if name == 'libps5_opengl_core33.a' else prefix / 'lib' / name
+        subprocess.run(command + [str(source), str(renderer / name)], check=True)
         symbols = subprocess.check_output(['llvm-nm', '--undefined-only', str(renderer / name)], text=True)
         if any(line.split()[-1:] == [symbol] for line in symbols.splitlines()
                for symbol in allocation_symbols):
@@ -169,6 +177,7 @@ def main():
     shutil.copytree(ROOT / 'ps5/licenses', target / 'licenses')
     shutil.copy2(ROOT / 'LICENSE', target / 'LICENSE')
     receipt = {'title_id': title_id, 'platform': 'PS5', 'renderer': 'OpenGL 3.3',
+               'scanout_format': 'BGRA8', 'scanout_runtime': scanout_receipt,
                'target_fps': 60, 'profile': args.profile,
                'width': profile['width'], 'height': profile['height'], 'console_tested': False,
                'eboot_sha256': hashlib.sha256((target / 'eboot.bin').read_bytes()).hexdigest()}

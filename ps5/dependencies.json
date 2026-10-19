@@ -144,5 +144,6 @@
         }
       ]
     }
-  }
+  },
+  "scanout_patch": "ps5/patches/bgra-scanout.patch"
 }

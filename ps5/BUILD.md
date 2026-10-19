@@ -102,3 +102,28 @@ python3 ps5/tests/test_controller_ui.py
 The generator uses rsvg-convert and original vector shapes. The optional
 `--verify-iso` check validates the source-texture hash manifest against an owned
 GAFE01 rev0 dump without copying original pixels into the replacement pack.
+
+## Display color format
+
+`build.py` rebuilds an isolated graphics runtime with
+`patches/bgra-scanout.patch` before linking. It does not modify the prepared SDK
+libraries. The PS5 VideoOut SDR buffer uses BGRA8; EGL's display resource and
+visual must agree with that format. Offscreen RGBA textures remain unchanged.
+The patch also permits BGRA draws and clears in the existing batching path.
+
+Ocarina of Time compensates for the same display format in its final ImGui
+shader. Animal Crossing has no final compositor, so its display target uses
+the correct format directly, without another full-screen pass.
+
+To rebuild and check the graphics runtime separately:
+
+```sh
+python3 ps5/tools/build-graphics.py --profile 2160p60
+python3 ps5/tools/tests/test-scanout-format.py
+```
+
+The host regression compiles the actual driver color encoder and Mesa format
+conversions with ASan/UBSan. It checks BGRA register encoding, clear packing,
+RGBA readback and unchanged offscreen colors. It is not GPU emulation.
+The corresponding-source archive contains the baseline dependency source and
+the patch; `build-graphics.py` applies that patch in `build/graphics-bgra/source`.
