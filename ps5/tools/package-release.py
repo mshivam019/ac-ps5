@@ -37,11 +37,12 @@ def main():
                 archive.write(path, prefix + '/' + path.relative_to(args.title).as_posix())
             if platform != 'catalog':
                 wrapper = 'install.sh' if platform == 'linux' else 'install.ps1'
-                for name in ('install.py', 'console_control.py', wrapper, 'prepare-data.py'):
+                for name in ('install.py', 'console_control.py', wrapper, 'prepare-data.py', 'ps5_install_lib.py', 'prepare-files.py', 'transfer-files.py', 'Prepare-Files-Windows.cmd', 'prepare-files.sh', 'INSTALL-HELPER-LICENSE'):
                     archive.write(ROOT / 'ps5/tools' / name, 'tools/' + name)
                 archive.write(args.title / 'assets/default-settings.ini', 'tools/default-settings.ini')
                 archive.write(ROOT / 'README.md', 'README.md')
                 archive.write(ROOT / 'ps5/INSTALL.txt', 'INSTALL.txt')
+                archive.write(ROOT / 'INSTALL.md', 'INSTALL.md')
                 for guide in ('CONSOLE-SETUP.md', 'MODS.md', 'SETTINGS.md'):
                     archive.write(ROOT / 'docs' / guide, guide)
                 archive.writestr('MANIFEST.json', json.dumps(manifest, indent=2) + '\n')

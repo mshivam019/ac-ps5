@@ -1,3 +1,2 @@
-#!/usr/bin/env bash
-set -euo pipefail
-exec python3 "$(dirname -- "${BASH_SOURCE[0]}")/install.py" "$@"
+#!/bin/sh
+exec python3 "$(dirname -- "$0")/install.py" "$@"

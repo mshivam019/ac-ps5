@@ -1,3 +1,8 @@
+CURRENT INSTALLATION GUIDE: https://github.com/mshivam019/ac-ps5/blob/main/INSTALL.md
+Use that guide for internal/USB storage, offline copying or Wi-Fi FTP.
+M.2, Ethernet and PS5 Upload are optional. Paths in older instructions below
+describe the developer setup, not required hardware or transfer software.
+
 Animal Crossing native PS5 — v1.0.0
 
 Native startup, town gameplay and saving have been tested on firmware 9.00.
@@ -9,8 +14,8 @@ Prepare private M.2 data with Python 3.11 or newer:
 
 Close Animal Crossing before updating it. Keep other active games untouched.
 Upload the extracted native title with FTP on the current console address:
-  Linux: bash tools/install.sh --src output/PPSA99660 --console CONSOLE_IP --data prepared-data
-  Windows: powershell -File tools/install.ps1 -Src output/PPSA99660 -Console CONSOLE_IP -Data prepared-data
+  Linux: bash tools/install.sh --src output/PPSA99660 --console CONSOLE_IP --remote-dir /YOUR/INSTALLED/PATH/PPSA99660 --closed --data prepared-data
+  Windows: powershell -File tools/install.ps1 -Src output/PPSA99660 -Console CONSOLE_IP -RemoteDir /YOUR/INSTALLED/PATH/PPSA99660 -Closed -Data prepared-data
 
 The same PS5 executable is in both ZIPs. Windows/Linux identify the installer
 platform, not the game platform. Python 3.11+ is required for data preparation.

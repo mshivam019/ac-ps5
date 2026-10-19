@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Prepare private M.2 data from a user's USA rev-0 disc and optional HD ZIP."""
+"""Prepare private game data from a user's USA rev-0 disc and optional HD ZIP."""
 import argparse
 import hashlib
 import json
@@ -63,7 +63,7 @@ def main():
     parser.add_argument('--hd-zip', type=Path)
     parser.add_argument('--output', required=True, type=Path)
     args = parser.parse_args()
-    receipt = {'disc': validate_disc(args.iso), 'console_data_path': '/mnt/ext1/app-ac'}
+    receipt = {'disc': validate_disc(args.iso), 'relative_title_data_path': 'data'}
     if args.output.exists():
         raise ValueError('Choose a new output directory to preserve existing data and saves')
     texture_members = []
@@ -102,7 +102,7 @@ def main():
         defaults = Path(__file__).resolve().parent / 'default-settings.ini'
     shutil.copy2(defaults, args.output / 'settings.ini')
     (args.output / 'data-receipt.json').write_text(json.dumps(receipt, indent=2) + '\n')
-    print(f'Private M.2 data prepared: {args.output}')
+    print(f'Private game data prepared: {args.output}')
 
 
 if __name__ == '__main__':

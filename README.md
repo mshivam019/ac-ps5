@@ -1,5 +1,9 @@
 # Animal Crossing for PS5
 
+**[Start here: installation, USB/offline copying, Wi-Fi FTP and game-file locations](INSTALL.md).**
+M.2, Ethernet and PS5 Upload are optional. The guide also explains recovery after
+store updates; older packaged instructions may describe the developer's M.2 setup.
+
 Native PS5 port of the USA GameCube release, based on ACreTeam's decompilation,
 FlyingMeta's PC platform layer and PalindromicBreadLoaf's 64-bit adaptations.
 The game is compiled for PS5; no GameCube emulator runs underneath it.
@@ -25,12 +29,13 @@ The game is compiled for PS5; no GameCube emulator runs underneath it.
 - [Catalog submission preparation](ps5/catalog/README.md)
 - [Original upstream documentation](README.upstream.md)
 
-The native title ID is PPSA99660. The installer defaults to M.2 at
-`/mnt/ext1/etaHEN/games/PPSA99660`. Game data lives in the title's `data`
+The native title ID is PPSA99660. Use the installation location selected by your
+loader/store (internal storage, M.2 or supported USB). Game data lives in the title's `data`
 directory (`/app0/data`); saves and settings use `/download0` and survive title
 updates. Save with the gyroid outside your own house before closing the game.
 
-Bring your own USA GAFE01 revision 0 ISO/GCM. Optional community HD textures
+For normal play, copy your own USA GAFE01 revision 0 ISO/GCM directly to
+`PPSA99660/data/rom/game.iso`; no preparer or compiler is required. Optional community HD textures
 are prepared separately and loaded on demand; the pack does not replace every
 texture. No disc image, community HD pack, keys or personal saves are included.
 
